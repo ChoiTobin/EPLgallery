@@ -67,6 +67,7 @@
         <div class="container">
             <img src="../static/logo.jpg" alt="logo" id="logo">
             <h1>영국 축구 갤러리</h1>
+            <p>사진과 함께 좋아하는 팀과 선수를 응원해보세요!</p>
             <div class="posting-box">
                 <a href="/posting"><button type="button" class="btn btn-primary">작성하기</button></a>
                 <button onclick="logout()" type="button" class="btn btn-danger">로그아웃</button>
@@ -76,7 +77,9 @@
     <div class="card-columns">
         {% for post in posts %}
         <div class="card">
+            {% if post.file %}
             <img class="card-img-top" src="../static/{{ post.file }}" alt="Card image cap">
+            {% endif %}
             <div class="card-body">
                 <h5 class="card-title">{{ post.title }}</h5>
                 <p class="card-text">{{ post.content }}</p>
