@@ -23,7 +23,6 @@
                     data: {
                         id_give: $('#userid').val(),
                         pw_give: $('#userpw').val(),
-                        nickname_give: $('#usernick').val()
                     },
                     success: function (response) {
                         if (response['result'] == 'success') {
@@ -62,18 +61,6 @@
                         <div class="field">
                             <div class="control">
                                 <input type="password" class="input" id="userpw" placeholder="My Password">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label" for="usernick">NICKNAME</label>
-                    </div>
-                    <div class="field-body">
-                        <div class="field">
-                            <div class="control">
-                                <input type="text" class="input" id="usernick" placeholder="My Nickname">
                             </div>
                         </div>
                     </div>

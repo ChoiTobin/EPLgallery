@@ -19,8 +19,8 @@ def home():
     token_receive = request.cookies.get('mytoken')
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        user_info = db.user.find_one({"id": payload['id']})
-        return render_template('index.html', nickname=user_info["nick"])
+        posts = list(db.epl.find({}, {'_id': False}))
+        return render_template('index.html')
     except jwt.ExpiredSignatureError:
         return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
     except jwt.exceptions.DecodeError:
@@ -37,17 +37,18 @@ def login():
 def register():
     return render_template('register.html')
 
+
 @app.route('/api/register', methods=['POST'])
 def api_register():
     id_receive = request.form['id_give']
     pw_receive = request.form['pw_give']
-    nickname_receive = request.form['nickname_give']
 
     pw_hash = hashlib.sha256(pw_receive.encode('utf-8')).hexdigest()
 
-    db.user.insert_one({'id': id_receive, 'pw': pw_hash, 'nick': nickname_receive})
+    db.user.insert_one({'id': id_receive, 'pw': pw_hash})
 
     return jsonify({'result': 'success'})
+
 
 @app.route('/api/login', methods=['POST'])
 def api_login():
@@ -68,4 +69,34 @@ def api_login():
         return jsonify({'result': 'success', 'token': token})
     else:
         return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
+
+
+@app.route('/api/post', methods=['POST'])
+def save_diary():
+    title_receive = request.form['title_give']
+    team_receive = request.form['content_give']
+    content_receive = request.form['team_give']
+
+    file = request.files["file_give"]
+
+    extension = file.filename.split('.')[-1]
+
+    today = datetime.now()
+    mytime = today.strftime('%Y-%m-%d-%H-%M-%S')
+
+    filename = f'file-{mytime}'
+
+    save_to = f'static/{filename}.{extension}'
+    file.save(save_to)
+
+    doc = {
+        'title': title_receive,
+        'content': content_receive,
+        'team': team_receive,
+        'file': f'{filename}.{extension}'
+    }
+
+    db.epl.insert_one(doc)
+
+    return jsonify({'msg': '저장 완료'})
 
