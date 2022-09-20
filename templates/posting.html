@@ -73,10 +73,11 @@
                 processData: false,
                 success: function (response) {
                     alert(response["msg"])
-                    window.location.reload()
+                    window.location.href = '/'
                 }
             });
         }
+
 
     </script>
 </head>
@@ -103,8 +104,8 @@
                               placeholder="내용"></textarea>
                 </div>
                 <button onclick="posting()" type="button" class="btn btn-primary">작성하기</button>
+                <button onclick="location.href='/'" type="button" class="btn btn-white">취소</button>
             </div>
-
         </div>
     </div>
 </div>
