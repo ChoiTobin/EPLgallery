@@ -12,13 +12,37 @@
         <!-- Bulma CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
         <!-- JS -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 
         <style>
-            .background {
-                background-image: url("https://www.wallpaperbetter.com/ko/hd-wallpaper-nnzfi");
+            * {
+
+            }
+            .title, .label {
+                color: white;
+            }
+
+            body {
+                background-image: linear-gradient(rgba(0, 0, 0, 0.4),  rgba(0, 0, 0, 0.4)),
+                url("https://p4.wallpaperbetter.com/wallpaper/911/928/871/football-stadium-stadium-manchester-united-wallpaper-preview.jpg");
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: bottom;
+                width: 100vw;
+                height:100vh;
+            }
+
+            .section {
+                padding-top: 300px;
+                width: 600px;
+                margin: auto;
+                position: relative;
             }
 
             .avail_msg {
@@ -29,15 +53,14 @@
             .unavail_msg{
                 display: none;
                 color: red;
-
             }
 
-            .id_line > input {
-                float: left;
+            .id_line {
+                display: flex;
             }
-            .id_line > button {
-                float: left;
-            }
+
+
+
         </style>
 
         <script>
@@ -92,7 +115,7 @@
     </head>
     <body class="background">
         <div class="section has-text-centered">
-            <h1 class="title">회원가입 페이지</h1>
+            <h1 class="title">영축갤 회원가입</h1>
             <div class="container" style="width:60%">
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
@@ -103,7 +126,7 @@
                             <div class="id_line">
                                 <input type="text" class="input" id="userid" aria-describedby="emailHelp"
                                        placeholder="ID">
-                                <button onclick="double_check()" type="button" class="btn btn-white">중복 확인</button>
+                                <button onclick="double_check()" type="button" class="button is-white">중복 확인</button>
                             </div>
                             <p class="avail_msg" id="avail_msg">사용 가능한 아이디 입니다.</p>
                             <p class="unavail_msg" id="unavail_msg">중복된 아이디 입니다.</p>
@@ -122,8 +145,9 @@
                         </div>
                     </div>
                 </div>
-                <button class="button is-primary" onclick="register()">회원가입</button>
-            </div>
+                    <button class="button is-primary" onclick="register()">회원가입</button>
+                    <button class="button is-white" onclick="location.href='/'">취소</button>
+                </div>
         </div>
     </body>
 </html>
