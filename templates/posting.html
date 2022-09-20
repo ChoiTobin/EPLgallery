@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <!-- Webpage Title -->
+    <title>글 작성</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+
+    <style>
+        * {
+            font-family: 'Jua', sans-serif;
+        }
+
+        .posting-box {
+            width: 500px;
+            margin-top: 20px;
+        }
+
+        .wrap {
+            width: 900px;
+            margin: auto;
+        }
+
+        .container {
+            padding-left: 50px;
+        }
+
+        .posting-box > .custom-file {
+            margin-bottom: 20px;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            bsCustomFileInput.init()
+        })
+        function posting() {
+            let title = $('#post-title').val()
+            let content = $("#post-content").val()
+            let team = $("#post-team").val()
+
+            let file = $('#post-file')[0].files[0]
+            let form_data = new FormData()
+
+            form_data.append("file_give", file)
+            form_data.append("title_give", title)
+            form_data.append("team_give", team)
+            form_data.append("content_give", content)
+
+
+            $.ajax({
+                type: "POST",
+                url: "/api/post",
+                data: form_data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    alert(response["msg"])
+                    window.location.reload()
+                }
+            });
+        }
+
+    </script>
+</head>
+<body>
+<div class="wrap">
+    <div class="jumbotron jumbotron-fluid">
+
+        <div class="container">
+            <h5>글쓰기</h5>
+            <div class="posting-box">
+                <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="post-file">
+                      <label class="custom-file-label" for="customFile">첨부</label>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" id="post-title" placeholder="제목">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="post-team" placeholder="팀">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" id="post-content" rows="3"
+                              placeholder="내용"></textarea>
+                </div>
+                <button onclick="posting()" type="button" class="btn btn-primary">작성하기</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
