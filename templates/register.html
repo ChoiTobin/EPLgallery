@@ -3,7 +3,7 @@
     <head>
 
         <!-- Webpage Title -->
-        <title>Hello, world!</title>
+        <title>회원가입</title>
 
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -20,9 +20,56 @@
             .background {
                 background-image: url("https://www.wallpaperbetter.com/ko/hd-wallpaper-nnzfi");
             }
+
+            .avail_msg {
+                display: none;
+                color: blue;
+            }
+
+            .unavail_msg{
+                display: none;
+                color: red;
+
+            }
+
+            .id_line > input {
+                float: left;
+            }
+            .id_line > button {
+                float: left;
+            }
         </style>
 
         <script>
+            function display_avail(){
+                $('#unavail_msg').hide()
+                $('#avail_msg').show()
+            }
+            function display_unavail(){
+                $('#avail_msg').hide()
+                $('#unavail_msg').show()
+            }
+
+            function double_check(){
+                $.ajax({
+                    type: "POST",
+                    url: "/api/check",
+                    data: {
+                        check_give: $('#userid').val(),
+                    },
+                    success: function (response) {
+                        if (response['result'] == 'available') {
+                            alert('사용 가능한 ID 입니다.')
+                            display_avail()
+                        } else if(response['result'] == 'unavailable') {
+                            alert('중복된 ID 입니다.')
+                            display_unavail()
+
+                        }
+                    }
+                })
+            }
+
             function register() {
                 $.ajax({
                     type: "POST",
@@ -53,10 +100,13 @@
                     </div>
                     <div class="field-body">
                         <div class="field">
-                            <div class="control">
+                            <div class="id_line">
                                 <input type="text" class="input" id="userid" aria-describedby="emailHelp"
-                                       placeholder="My ID">
+                                       placeholder="ID">
+                                <button onclick="double_check()" type="button" class="btn btn-white">중복 확인</button>
                             </div>
+                            <p class="avail_msg" id="avail_msg">사용 가능한 아이디 입니다.</p>
+                            <p class="unavail_msg" id="unavail_msg">중복된 아이디 입니다.</p>
                         </div>
                     </div>
                 </div>
@@ -67,7 +117,7 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <input type="password" class="input" id="userpw" placeholder="My Password">
+                                <input type="password" class="input" id="userpw" placeholder="Password">
                             </div>
                         </div>
                     </div>

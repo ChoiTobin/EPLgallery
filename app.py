@@ -103,6 +103,16 @@ def api_post():
 
     return jsonify({'msg': '작성 완료'})
 
+@app.route('/api/check', methods=['POST'])
+def api_check():
+    check_receive = request.form['check_give']
+
+    id_list = list(db.user.find({'id':check_receive}, {'_id': False}))
+    if(len(id_list) > 0):
+        return jsonify({'result':'unavailable'})
+    else:
+        return jsonify({'result':'available'})
+
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
