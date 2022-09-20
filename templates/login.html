@@ -38,7 +38,29 @@
                 })
             }
         </script>
+        <style>
+            .textColor{
+                color: white;
+            }
 
+            body{
+                background-image: linear-gradient(rgba(0, 0, 0, 0.4),  rgba(0, 0, 0, 0.4)), url("https://p4.wallpaperbetter.com/wallpaper/911/928/871/football-stadium-stadium-manchester-united-wallpaper-preview.jpg");;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                width: 100vw;
+                height:100vh;
+
+                }
+            .section {
+                padding-top: 300px;
+            }
+            .title,.label{
+                color: white;
+
+            }
+
+        </style>
     </head>
     <body>
         <div class="section has-text-centered">
@@ -70,6 +92,7 @@
                     </div>
                 </div>
                 <button class="button is-primary" onclick="login()">로그인</button>
+                <button class="button is-primary"><a  class="textColor" href="/register">회원가입</a></button>
             </div>
         </div>
     </body>
