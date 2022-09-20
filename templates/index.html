@@ -43,7 +43,6 @@
     <script>
         function logout() {
             $.removeCookie('mytoken');
-            alert('로그아웃!')
             window.location.href = '/login'
         }
     </script>
@@ -58,8 +57,16 @@
             </div>
         </div>
     </div>
-    <div class="card-columns" id="cards-box">
-        {% for en %}
+    <div class="card-columns">
+        {% for post in posts %}
+        <div class="card">
+            <img class="card-img-top" src="../static/{{ post.file }}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text">{{ post.content }}</p>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 </div>
 </body>
