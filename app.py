@@ -14,6 +14,7 @@ from datetime import datetime, timedelta
 
 import hashlib
 
+
 @app.route('/')
 def home():
     token_receive = request.cookies.get('mytoken')
@@ -104,6 +105,7 @@ def api_post():
     db.epl.insert_one(doc)
 
     return jsonify({'msg': '작성 완료'})
+
 
 @app.route('/api/check', methods=['POST'])
 def api_check():
