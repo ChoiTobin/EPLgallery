@@ -10,7 +10,7 @@ SECRET_KEY = 'SPARTA'
 
 import jwt
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import hashlib
 
@@ -65,7 +65,7 @@ def api_login():
     if result is not None:
         payload = {
             'id': id_receive,
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(days=1)
+            'exp': datetime.utcnow() + timedelta(days=1)
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
 

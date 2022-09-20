@@ -21,6 +21,15 @@
             font-family: 'Jua', sans-serif;
         }
 
+        body{
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4),  rgba(0, 0, 0, 0.4)), url("https://p4.wallpaperbetter.com/wallpaper/911/928/871/football-stadium-stadium-manchester-united-wallpaper-preview.jpg");;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 100vw;
+            height:100vh;
+        }
+
         .posting-box {
             width: 500px;
             margin-top: 20px;
@@ -59,7 +68,7 @@
             <img src="../static/logo.jpg" alt="logo" id="logo">
             <h1>영국 축구 갤러리</h1>
             <div class="posting-box">
-                <button type="button" class="btn btn-primary">작성하기</button>
+                <a href="/posting"><button type="button" class="btn btn-primary">작성하기</button></a>
                 <button onclick="logout()" type="button" class="btn btn-danger">로그아웃</button>
             </div>
         </div>
