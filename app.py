@@ -10,7 +10,7 @@ SECRET_KEY = 'SPARTA'
 
 import jwt
 
-import datetime
+from datetime import datetime
 
 import hashlib
 
@@ -37,6 +37,9 @@ def login():
 def register():
     return render_template('register.html')
 
+@app.route('/posting')
+def posting():
+    return render_template('posting.html')
 
 @app.route('/api/register', methods=['POST'])
 def api_register():
@@ -74,8 +77,8 @@ def api_login():
 @app.route('/api/post', methods=['POST'])
 def api_post():
     title_receive = request.form['title_give']
-    team_receive = request.form['content_give']
-    content_receive = request.form['team_give']
+    team_receive = request.form['team_give']
+    content_receive = request.form['content_give']
 
     file = request.files["file_give"]
 
@@ -98,7 +101,7 @@ def api_post():
 
     db.epl.insert_one(doc)
 
-    return jsonify({'msg': '저장 완료'})
+    return jsonify({'msg': '작성 완료'})
 
 
 if __name__ == '__main__':
