@@ -10,7 +10,7 @@ SECRET_KEY = 'SPARTA'
 
 import jwt
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import hashlib
 
@@ -37,9 +37,11 @@ def login():
 def register():
     return render_template('register.html')
 
+
 @app.route('/posting')
 def posting():
     return render_template('posting.html')
+
 
 @app.route('/api/register', methods=['POST'])
 def api_register():
@@ -65,7 +67,7 @@ def api_login():
     if result is not None:
         payload = {
             'id': id_receive,
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(days=1)
+            'exp': datetime.utcnow() + timedelta(days=1)
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
 
