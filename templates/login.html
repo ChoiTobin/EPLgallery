@@ -39,6 +39,9 @@
             }
         </script>
         <style>
+            *{
+                width: 100%;
+            }
             .textColor{
                 color: white;
             }
@@ -54,18 +57,46 @@
 
             .section {
                 padding-top: 300px;
+                width: 600px;
+                margin: auto;
+                position: relative;
             }
 
             .title,.label{
                 color: white;
 
+
             }
+
+            button{
+                {#width: 100px;#}
+            }
+
+            .title{
+                margin-left: 30px;
+                font-size: 36px;
+            }
+            .jump{
+                margin-left: 75px;
+                width: 128px;
+            }
+            .jump2{
+                width: 123px;
+            }
+
+
+
+
+
+
+
+
 
         </style>
     </head>
     <body>
         <div class="section has-text-centered">
-            <h1 class="title">로그인 페이지</h1>
+            <h1 class="title">영축갤 로그인 페이지</h1>
             <div class="container" style="width:60%">
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
@@ -75,7 +106,7 @@
                         <div class="field">
                             <div class="control">
                                 <input type="text" class="input" id="userid" aria-describedby="emailHelp"
-                                       placeholder="My ID">
+                                       placeholder="아이디를 입력해 주세요">
                             </div>
                         </div>
                     </div>
@@ -87,13 +118,13 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <input type="password" class="input" id="userpw" placeholder="My Password">
+                                <input type="password" class="input" id="userpw" placeholder="비밀번호를 입력해 주세요" >
                             </div>
                         </div>
                     </div>
                 </div>
-                <button class="button is-primary" onclick="login()">로그인</button>
-                <button class="button is-primary"><a  class="textColor" href="/register">회원가입</a></button>
+                <button class="button is-primary jump" onclick="login()">로그인</button>
+                <button class="button is-primary jump2"><a  class="textColor" href="/register">회원가입</a></button>
             </div>
         </div>
     </body>
