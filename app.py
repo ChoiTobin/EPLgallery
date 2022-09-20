@@ -37,9 +37,11 @@ def login():
 def register():
     return render_template('register.html')
 
+
 @app.route('/posting')
 def posting():
     return render_template('posting.html')
+
 
 @app.route('/api/register', methods=['POST'])
 def api_register():
