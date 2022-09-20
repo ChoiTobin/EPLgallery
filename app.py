@@ -20,7 +20,7 @@ def home():
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         posts = list(db.epl.find({}, {'_id': False}))
-        return render_template('index.html')
+        return render_template('index.html', posts=posts)
     except jwt.ExpiredSignatureError:
         return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
     except jwt.exceptions.DecodeError:
@@ -99,4 +99,8 @@ def save_diary():
     db.epl.insert_one(doc)
 
     return jsonify({'msg': '저장 완료'})
+
+
+if __name__ == '__main__':
+    app.run('0.0.0.0', port=5000, debug=True)
 

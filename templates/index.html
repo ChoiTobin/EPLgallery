@@ -1,7 +1,6 @@
 <!doctype html>
-<html lang="en">
-  <head>
-
+<html lang="ko">
+<head>
     <!-- Webpage Title -->
     <title>Hello, world!</title>
 
@@ -9,28 +8,59 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bulma CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-		<!-- JS -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 
+    <style>
+        * {
+            font-family: 'Jua', sans-serif;
+        }
+
+        .posting-box {
+            width: 500px;
+            margin-top: 20px;
+        }
+
+        .wrap {
+            width: 900px;
+            margin: auto;
+        }
+
+        .container {
+            padding-left: 50px;
+        }
+
+        .posting-box > .custom-file {
+            margin-bottom: 20px;
+        }
+    </style>
 
     <script>
-      function logout(){
-        $.removeCookie('mytoken');
-        alert('로그아웃!')
-        window.location.href='/login'
-      }
-
+        function logout() {
+            $.removeCookie('mytoken');
+            alert('로그아웃!')
+            window.location.href = '/login'
+        }
     </script>
-
-  </head>
-  <body>
-    <p>
-      <h1 class="title">로그인하고 5초 동안만 볼 수 있는 페이지입니다.</h1>
-      <h1 class="subtitle">계속 새로고침 해보세요</h1>
-    </p>
-    <button class="button is-danger" onclick="logout()">로그아웃하기</button>
-  </body>
+</head>
+<body>
+<div class="wrap">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1>영축갤</h1>
+            <div class="posting-box">
+                <button onclick="posting()" type="button" class="btn btn-primary" onclick="logout()">로그아웃</button>
+            </div>
+        </div>
+    </div>
+    <div class="card-columns" id="cards-box">
+        {% for en %}
+    </div>
+</div>
+</body>
 </html>
