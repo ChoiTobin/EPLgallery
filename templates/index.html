@@ -38,6 +38,11 @@
         .posting-box > .custom-file {
             margin-bottom: 20px;
         }
+
+        #logo {
+            width: 250px;
+            margin-bottom: 15px;
+        }
     </style>
 
     <script>
@@ -51,9 +56,11 @@
 <div class="wrap">
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1>영축갤</h1>
+            <img src="../static/logo.jpg" alt="logo" id="logo">
+            <h1>영국 축구 갤러리</h1>
             <div class="posting-box">
-                <button onclick="posting()" type="button" class="btn btn-primary" onclick="logout()">로그아웃</button>
+                <button type="button" class="btn btn-primary">작성하기</button>
+                <button onclick="logout()" type="button" class="btn btn-danger">로그아웃</button>
             </div>
         </div>
     </div>
