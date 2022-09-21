@@ -19,6 +19,9 @@
     
     **[http://13.209.48.179/](http://13.209.48.179/)**
     
+    **🎫 프로젝트 와이어 프레임 및 API 설계도🎫**
+    https://rorobin.tistory.com/91
+    
     **🎞 프로젝트 시연영상 🎞**
     
     [https://youtu.be/XTOTG9GVEQs](https://youtu.be/XTOTG9GVEQs)
