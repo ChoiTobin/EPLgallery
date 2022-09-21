@@ -24,19 +24,24 @@
     [https://youtu.be/XTOTG9GVEQs](https://youtu.be/XTOTG9GVEQs)
     
     **📰 Login Page 📰로그인**
+    
     • JWT 방식으로 구현
+    
     • 회원가입 버튼 클릭 시 회원가입 페이지로 이동
     
     **📰 Join Membership Page 📰회원가입**
+    
     • 아이디 중복확인 시 중복 아이디 체크
     
     **📰 Post Section Page 📰메인 화면**
+    
     • User들이 작성한 글들을 보여주는 페이지
     • 로그아웃 버튼 클릭 시, 로그인 페이지로 이동
     • 글쓰기 버튼 클릭 시, 글 쓰기 페이지로 이동
     • 글쓰기 화면에서 생선한 게시물이 화면에 나타남
     
     **📰 Post Writing Page 📰글쓰기 화면**
+    
     • 파일 선택 버튼 클릭 시, 내 컴퓨터의 이미지 로드 가능
     • 이름, 팀명, 코멘트를 작성할 수 있는 입력란
     • 저장 버튼 클릭 시, DB에 해당 글이 저장
